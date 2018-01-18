@@ -1,0 +1,10 @@
+.menu, .button {
+	-fx-background-color: #444 ;
+}
+.menu_expanded {
+	-fx-background-color: #555 ;
+}
+ 
+.button:focused {
+	-fx-background-color: #555 ;
+}
