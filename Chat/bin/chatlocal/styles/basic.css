@@ -1,8 +1,13 @@
 .menu, .button {
 	-fx-background-color: #444 ;
 }
+.menu {
+	-fx-padding: 10.0px 0.0px 0.0px 0.0px ;
+}
+
 .menu_expanded {
 	-fx-background-color: #555 ;
+	-fx-background: #555 ;
 }
  
 .button:focused {

@@ -18,7 +18,7 @@ public class CustomImageCircle extends ImageView {
 
 	}
 
-	public void setImage(ImageView imageView) {
+	public void setImageView(ImageView imageView) {
 		this.imageView = imageView;
 	}
 

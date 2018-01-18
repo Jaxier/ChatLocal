@@ -81,6 +81,9 @@ public class CustomConversation extends HBox {
 		});
 
 	}
+	public HBox getConversation() {
+		return conversation;
+	}
 
 	public CustomImageCircle getImagePerfil() {
 		return imagePerfil;
