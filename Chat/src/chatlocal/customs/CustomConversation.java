@@ -29,20 +29,30 @@ public class CustomConversation extends HBox {
 		headerHBox = new HBox();
 		textosVBox = new VBox();
 		imagePerfil = new CustomImageCircle();
-
+		
 		nombre = new Label();
 		ultimoMensaje = new Label();
 		horaUltimoMensaje = new Label();
 
+		
 		headerHBox.getChildren().addAll(nombre, horaUltimoMensaje);
+		headerHBox.setSpacing(5);
 		HBox.setHgrow(nombre, Priority.ALWAYS);
+		nombre.setMaxWidth(Double.MAX_VALUE);
+			
+		
 		nombre.setAlignment(Pos.BASELINE_LEFT);
 		horaUltimoMensaje.setAlignment(Pos.BASELINE_RIGHT);
 
 		textosVBox.getChildren().addAll(headerHBox, ultimoMensaje);
+				
+		conversation.getChildren().addAll(imagePerfil.getImageView(), textosVBox);
+		conversation.setSpacing(5);
 
-		conversation.getChildren().addAll(imagePerfil, textosVBox);
-
+		HBox.setHgrow(textosVBox, Priority.ALWAYS);
+				
+		conversation.getStyleClass().add("conversacion");
+		
 		/*
 		 * Preparando bindeos
 		 */
@@ -65,7 +75,7 @@ public class CustomConversation extends HBox {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				if (nombreModel.get().length() > MAXCHAR) {
-					nombreModel.set(nombreModel.get().substring(0, MAXCHAR));
+					nombreModel.set(nombreModel.get().substring(0, MAXCHAR)+"...");
 				}
 			}
 		});
@@ -75,7 +85,7 @@ public class CustomConversation extends HBox {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				if (mensajeModel.get().length() > MAXCHAR) {
-					mensajeModel.set(mensajeModel.get().substring(0, MAXCHAR));
+					mensajeModel.set(mensajeModel.get().substring(0, MAXCHAR)+"...");
 				}
 			}
 		});
@@ -88,9 +98,10 @@ public class CustomConversation extends HBox {
 	public CustomImageCircle getImagePerfil() {
 		return imagePerfil;
 	}
-
+//
 	public void setImagePerfil(ImageView image) {
-		this.imagePerfil.setImageView(image);
+		
+		imagePerfil.setImageView(image);;
 	}
 
 	public StringProperty getNombreModel() {

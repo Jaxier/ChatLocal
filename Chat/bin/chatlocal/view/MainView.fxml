@@ -14,17 +14,17 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/basic.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <SplitPane dividerPositions="0.5" VBox.vgrow="ALWAYS">
+      <SplitPane fx:id="splitPane" dividerPositions="0.5" VBox.vgrow="ALWAYS">
          <items>
             <HBox>
                <children>
-                  <VBox alignment="TOP_CENTER" prefWidth="100.0" spacing="5.0" styleClass="menu">
+                  <VBox alignment="TOP_CENTER" minWidth="64.0" prefWidth="64.0" spacing="5.0" styleClass="menu">
                      <children>
-                        <Button contentDisplay="GRAPHIC_ONLY" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefWidth="72.0" text="Button">
+                        <Button fx:id="menuButton" contentDisplay="GRAPHIC_ONLY" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" styleClass="menu_action" text="Button">
                            <graphic>
-                              <ImageView fitHeight="54.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="menuImageView" fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" styleClass="img_menu">
                                  <image>
-                                    <Image url="@../../../image/icon/menu_close.png" />
+                                    <Image url="@../../../image/icon/menu_open.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -33,36 +33,36 @@
                            </VBox.margin>
                         </Button>
                         <Separator />
-                        <Button contentDisplay="GRAPHIC_ONLY" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button">
+                        <Button fx:id="mensajeButton" contentDisplay="GRAPHIC_ONLY" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="Button">
                            <graphic>
-                              <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../image/icon/menu_chat.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button contentDisplay="GRAPHIC_ONLY" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button">
+                        <Button fx:id="directorioContactosButton" contentDisplay="GRAPHIC_ONLY" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="Button">
                            <graphic>
-                              <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../image/icon/menu_contacts.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button contentDisplay="GRAPHIC_ONLY" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button">
+                        <Button fx:id="agregarContactoButton" contentDisplay="GRAPHIC_ONLY" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="Button">
                            <graphic>
-                              <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../image/icon/menu_add_contact.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button contentDisplay="GRAPHIC_ONLY" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button">
+                        <Button fx:id="ajustesButton" contentDisplay="GRAPHIC_ONLY" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="64.0" prefWidth="64.0" text="Button">
                            <graphic>
-                              <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../image/icon/menu_settings.png" />
                                  </image>
@@ -71,9 +71,9 @@
                         </Button>
                      </children>
                   </VBox>
-                  <VBox minWidth="0.0" styleClass="menu_expanded" HBox.hgrow="ALWAYS">
+                  <VBox fx:id="mainListaLeftVBox" minWidth="0.0" styleClass="menu_expanded" HBox.hgrow="ALWAYS">
                      <children>
-                        <TextField maxWidth="-Infinity" prefWidth="200.0" promptText="Buscar">
+                        <TextField fx:id="buscarConverTextField" maxWidth="1.7976931348623157E308" promptText="Buscar">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -83,17 +83,48 @@
                         </TextField>
                         <ScrollPane fitToHeight="true" fitToWidth="true" styleClass="menu_expanded" VBox.vgrow="ALWAYS">
                            <content>
-                              <VBox />
+                              <VBox fx:id="listaConverVBox" spacing="5.0">
+                                 <padding>
+                                    <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                 </padding></VBox>
                            </content>
                         </ScrollPane>
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <BorderPane prefHeight="200.0" prefWidth="200.0">
+            <BorderPane fx:id="mensajesRightBorderPane" minHeight="0.0" minWidth="0.0">
                <bottom>
-                  <HBox BorderPane.alignment="CENTER" />
+                  <HBox spacing="5.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField fx:id="mensajeTextField" maxHeight="1.7976931348623157E308" promptText="Mensaje" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="adjuntoButton" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" styleClass="buttons_enviar_text" text="Button">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/icon/adjunto.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="enviarButton" contentDisplay="GRAPHIC_ONLY" defaultButton="true" mnemonicParsing="false" styleClass="buttons_enviar_text" text="Button">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/icon/enviar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
                </bottom>
+               <center>
+                  <VBox fx:id="mensajePersonasVBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+               </center>
             </BorderPane>
          </items>
       </SplitPane>

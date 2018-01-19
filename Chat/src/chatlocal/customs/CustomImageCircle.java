@@ -5,21 +5,42 @@ import javafx.scene.shape.Circle;
 
 public class CustomImageCircle extends ImageView {
 
-	private Circle clip;
+	private Circle clip = new Circle();
 	private ImageView imageView;
-
+	
+		
 	public CustomImageCircle() {
 		super();
-		clip = new Circle(300, 200, 200);
-		imageView = new ImageView();
-
-		clip.radiusProperty().bind((this.fitHeightProperty().multiply(this.fitWidthProperty()).divide(2)));
+				
+		imageView = new ImageView("file:image/defaults/people.png");
+		
+		imageView.setFitHeight(50);
+		imageView.setFitWidth(50);
+		
+		clip.centerXProperty().bind(imageView.fitHeightProperty().divide(2));
+		clip.centerYProperty().bind(imageView.fitWidthProperty().divide(2));
+		
+		clip.radiusProperty().bind(
+        		(imageView.fitHeightProperty().divide(2))
+        		.add(imageView.getFitWidth()/2).divide(2)
+        		);
+		
 		imageView.setClip(clip);
-
+		
+		
 	}
-
-	public void setImageView(ImageView imageView) {
-		this.imageView = imageView;
+	
+	public void setUrlImage(String urlImage) {
+		setImageView(new ImageView(urlImage));
+	}
+	
+	public void setImageView(ImageView image) {
+		this.imageView.setClip(null);
+		this.imageView = image;
+		this.imageView.setFitHeight(50);
+		this.imageView.setFitWidth(50);
+		this.imageView.setClip(clip);		
+		
 	}
 
 	public ImageView getImageView() {
